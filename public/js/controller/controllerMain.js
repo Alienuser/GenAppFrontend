@@ -28,7 +28,9 @@
         };
 
         function startPolling() {
+            // Indicator for loading
             $scope.polling = true;
+            $scope.policyload = true;
             interval = $interval(pollApi, 1500);
         }
 
@@ -38,7 +40,6 @@
         }
 
         function pollApi() {
-            $scope.polling = true;
             Api.getCustomerData(customerID)
                 .then(function (response) {
                     if (speak) {
@@ -48,14 +49,7 @@
                         speak = false;
                     }
                     // Set the data
-                    var data = response.data.data;
-                    $scope.firstname = data.firstName;
-                    $scope.lastname = data.houseName;
-                    $scope.birthday = data.birthDay + "." + data.birthMonth + "." + data.birthYear;
-                    $scope.customerno = data.customerNumber;
-                    $scope.email = data.emailAddress;
-                    $scope.address = data.postCode;
-                    $scope.mobilePhone = data.mobilePhone;
+                    $scope.customer = response.data.data;
                 }, function errorCallback(response) {
                     if (showToast) {
                         $mdToast.showSimple("Error: No data.");
@@ -74,24 +68,21 @@
                     $scope.insurances = null;
                 });
 
-            for (var i = 0; i < 10; i++) {
-                $scope.policyload = true;
-                Api.getPolicy(customerID, i)
-                    .then(function (response) {
-                        $scope.policy = response.data.LGIPOL01OperationResponse.commarea.ca_policy_request;
-                        $scope.policyCommon = response.data.LGIPOL01OperationResponse.commarea.ca_policy_request.ca_policy_common;
-                        $scope.policyEndowment = response.data.LGIPOL01OperationResponse.commarea.ca_policy_request.ca_endowment;
-                    }, function errorCallback(response) {
-                        $scope.policyload = false;
-                    });
-            }
+            Api.getPolicy(customerID, 4)
+                .then(function (response) {
+                    $scope.policy = response.data.LGIPOL01OperationResponse.commarea.ca_policy_request;
+                    $scope.policyCommon = response.data.LGIPOL01OperationResponse.commarea.ca_policy_request.ca_policy_common;
+                    $scope.policyEndowment = response.data.LGIPOL01OperationResponse.commarea.ca_policy_request.ca_endowment;
+                    $scope.policyload = false;
+                }, function errorCallback(response) {
+                    $scope.policyload = false;
+                });
         }
 
         function addUser(lastname, birthyear, mobilephone, housename, birthmonth, postcode, email, housenumber, birthday, firstname) {
             Api.addUser(lastname, parseInt(birthyear), mobilephone, housename, parseInt(birthmonth), parseInt(1), postcode, email, parseInt(housenumber), parseInt(birthday), firstname)
                 .then(function (response) {
                     $mdToast.showSimple("Added user successfully. Customer no.: " + response.data.data.customerNumber);
-                    console.log(response);
                 }, function errorCallback(response) {
                     $mdToast.showSimple("Could not add user.");
                 });
@@ -104,7 +95,7 @@
                     pollApi();
                 }, function errorCallback(response) {
                     $mdToast.showSimple("Could not add data.");
-                })
+                });
         }
 
         $scope.addData = function () {
@@ -114,6 +105,10 @@
                 openFrom: angular.element(document.querySelector('#addData')),
                 closeTo: angular.element(document.querySelector('#addData')),
                 controller: function ($scope) {
+                    $scope.cancel = function () {
+                        $mdDialog.hide();
+                    };
+
                     $scope.add = function () {
                         addData($scope.title);
                         $mdDialog.hide();
@@ -129,6 +124,10 @@
                 openFrom: angular.element(document.querySelector('#fabSearch')),
                 closeTo: angular.element(document.querySelector('#fabSearch')),
                 controller: function ($scope) {
+                    $scope.cancel = function () {
+                        $mdDialog.hide();
+                    };
+
                     $scope.search = function () {
                         customerID = $scope.customerID;
                         $rootScope.stopPolling();
@@ -150,6 +149,10 @@
                 openFrom: angular.element(document.querySelector('#fabUser')),
                 closeTo: angular.element(document.querySelector('#fabUser')),
                 controller: function ($scope) {
+                    $scope.cancel = function () {
+                        $mdDialog.hide();
+                    };
+
                     $scope.add = function () {
                         addUser($scope.lastname, $scope.birthyear, $scope.mobilephone, $scope.housename, $scope.birthmonth, $scope.postcode, $scope.email, $scope.housenumber, $scope.birthday, $scope.firstname);
                         $mdDialog.hide();

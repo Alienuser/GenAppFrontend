@@ -1,6 +1,6 @@
 <div layout-xs="column" layout-align-xs="start stretch" layout="row" layout-align="center start" flex>
     <md-card flex-gt-xs="30">
-        <md-progress-linear ng-show="polling && !customerno" md-mode="query"></md-progress-linear>
+        <md-progress-linear ng-show="polling && !customer.customerNumber" md-mode="query"></md-progress-linear>
         <md-card-title>
             <md-card-title-text>
                 <span class="md-headline">Customer data</span>
@@ -9,44 +9,44 @@
         <md-card-content layout="column">
             <div layout="row">
                 <div flex="40"><strong>Customer no.:</strong></div>
-                <div ng-show="customerno" flex>{{ customerno }}</div>
-                <div ng-show="!customerno" flex><i>no data</i></div>
+                <div ng-show="customer.customerNumber" flex>{{ customer.customerNumber }}</div>
+                <div ng-show="!customer.customerNumber" flex><i>no data</i></div>
             </div>
             <br>
             <div layout="row">
                 <div flex="40"><strong>Firstname:</strong></div>
-                <div ng-show="firstname" flex>{{ firstname }}</div>
-                <div ng-show="!firstname" flex><i>no data</i></div>
+                <div ng-show="customer.firstName" flex>{{ customer.firstName }}</div>
+                <div ng-show="!customer.firstName" flex><i>no data</i></div>
             </div>
             <br>
             <div layout="row">
                 <div flex="40"><strong>Lastname:</strong></div>
-                <div ng-show="lastname" flex>{{ lastname }}</div>
-                <div ng-show="!lastname" flex><i>no data</i></div>
+                <div ng-show="customer.lastName" flex>{{ customer.lastName }}</div>
+                <div ng-show="!customer.lastName" flex><i>no data</i></div>
             </div>
             <br>
             <div layout="row">
                 <div flex="40"><strong>eMail:</strong></div>
-                <div ng-show="email" flex>{{ email }}</div>
-                <div ng-show="!email" flex><i>no data</i></div>
+                <div ng-show="customer.emailAddress" flex>{{ customer.emailAddress }}</div>
+                <div ng-show="!customer.emailAddress" flex><i>no data</i></div>
             </div>
             <br>
             <div layout="row">
                 <div flex="40"><strong>Birthday:</strong></div>
-                <div ng-show="birthday" flex>{{ birthday }}</div>
-                <div ng-show="!birthday" flex><i>no data</i></div>
+                <div ng-show="customer.birthDay" flex>{{ customer.birthDay }}.{{ customer.birthMonth }}.{{ customer.birthYear }}</div>
+                <div ng-show="!customer.birthDay" flex><i>no data</i></div>
             </div>
             <br>
             <div layout="row">
                 <div flex="40"><strong>Address:</strong></div>
-                <div ng-show="address" flex>{{ address }}</div>
-                <div ng-show="!address" flex><i>no data</i></div>
+                <div ng-show="customer.postCode" flex>{{ customer.postCode }}</div>
+                <div ng-show="!customer.postCode" flex><i>no data</i></div>
             </div>
             <br>
             <div layout="row">
                 <div flex="40"><strong>Mobilephone:</strong></div>
-                <div ng-show="mobilePhone" flex>{{ mobilePhone }}</div>
-                <div ng-show="!mobilePhone" flex><i>no data</i></div>
+                <div ng-show="customer.mobilePhone" flex>{{ customer.mobilePhone }}</div>
+                <div ng-show="!customer.mobilePhone" flex><i>no data</i></div>
             </div>
         </md-card-content>
         <md-card-actions layout="row" layout-align="end center">
@@ -130,8 +130,8 @@
             </md-card-title-text>
         </md-card-title>
         <md-card-content layout="column" layout-align="start">
-            <i ng-show="!customerno" style="color: #F44336;">- no Service</i>
-            <i ng-show="customerno" style="color: #4CAF50;">- Service up</i>
+            <i ng-show="!customer.customerNumber" style="color: #F44336;">- no Service</i>
+            <i ng-show="customer.customerNumber" style="color: #4CAF50;">- Service up</i>
         </md-card-content>
     </md-card>
 </div>
