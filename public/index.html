@@ -1,0 +1,61 @@
+<html lang="en">
+<head>
+    <title>GenApp Frontend</title>
+
+    <!-- Browser settings -->
+    <meta name="theme-color" content="#4178be">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Include libraries -->
+    <link rel="stylesheet" href="lib/angular-material/angular-material.min.css">
+    <link rel="stylesheet" href="lib/angular-hotkeys/build/hotkeys.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <!-- Include own stylesheet -->
+    <link rel="stylesheet" href="css/app.css">
+</head>
+<body ng-app="gaf" layout="column" ng-cloak>
+
+<section layout="row" flex>
+
+    <!-- Include the sidenav -->
+    <div ng-include="'templates/general/sidenav.html'"></div>
+
+    <md-content flex id="content">
+
+        <!-- Include the toolbar -->
+        <div ng-include="'templates/general/toolbar.html'"></div>
+
+        <!-- Include the content -->
+        <div ng-view layout-padding></div>
+
+    </md-content>
+
+</section>
+
+<!-- Spinner -->
+<md-progress-circular id="spinner" ng-show="spinnerMode" md-mode="indeterminate"
+                      md-diameter="96"></md-progress-circular>
+
+<!-- Include Libraries -->
+<script src="lib/angular/angular.min.js"></script>
+<script src="lib/angular-material/angular-material.min.js"></script>
+<script src="lib/angular-animate/angular-animate.min.js"></script>
+<script src="lib/angular-aria/angular-aria.min.js"></script>
+<script src="lib/angular-messages/angular-messages.min.js"></script>
+<script src="lib/angular-route/angular-route.min.js"></script>
+<script src="lib/angular-hotkeys/build/hotkeys.min.js"></script>
+
+<!-- Include own javascript -->
+<script src="js/app.js"></script>
+
+<!-- Controller -->
+<script src="js/controller/controllerToolbar.js"></script>
+<script src="js/controller/controllerSidenav.js"></script>
+<script src="js/controller/controllerMain.js"></script>
+
+<!-- Factories -->
+<script src="js/factory/factoryApi.js"></script>
+
+</body>
+</html>

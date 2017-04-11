@@ -1,0 +1,10 @@
+applications:
+- path: .
+  memory: 128M
+  instances: 1
+  domain: mybluemix.net
+  name: GenAppFrontend
+  host: genappfrontend
+  services:
+    #- Auto-Scaling-4f
+    - Availability Monitoring-q9

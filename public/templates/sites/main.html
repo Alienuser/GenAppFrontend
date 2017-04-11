@@ -1,0 +1,147 @@
+<div layout-xs="column" layout-align-xs="start stretch" layout="row" layout-align="center start" flex>
+    <md-card flex-gt-xs="30">
+        <md-progress-linear ng-show="polling && !customerno" md-mode="query"></md-progress-linear>
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">Customer data</span>
+            </md-card-title-text>
+        </md-card-title>
+        <md-card-content layout="column">
+            <div layout="row">
+                <div flex="40"><strong>Customer no.:</strong></div>
+                <div ng-show="customerno" flex>{{ customerno }}</div>
+                <div ng-show="!customerno" flex><i>no data</i></div>
+            </div>
+            <br>
+            <div layout="row">
+                <div flex="40"><strong>Firstname:</strong></div>
+                <div ng-show="firstname" flex>{{ firstname }}</div>
+                <div ng-show="!firstname" flex><i>no data</i></div>
+            </div>
+            <br>
+            <div layout="row">
+                <div flex="40"><strong>Lastname:</strong></div>
+                <div ng-show="lastname" flex>{{ lastname }}</div>
+                <div ng-show="!lastname" flex><i>no data</i></div>
+            </div>
+            <br>
+            <div layout="row">
+                <div flex="40"><strong>eMail:</strong></div>
+                <div ng-show="email" flex>{{ email }}</div>
+                <div ng-show="!email" flex><i>no data</i></div>
+            </div>
+            <br>
+            <div layout="row">
+                <div flex="40"><strong>Birthday:</strong></div>
+                <div ng-show="birthday" flex>{{ birthday }}</div>
+                <div ng-show="!birthday" flex><i>no data</i></div>
+            </div>
+            <br>
+            <div layout="row">
+                <div flex="40"><strong>Address:</strong></div>
+                <div ng-show="address" flex>{{ address }}</div>
+                <div ng-show="!address" flex><i>no data</i></div>
+            </div>
+            <br>
+            <div layout="row">
+                <div flex="40"><strong>Mobilephone:</strong></div>
+                <div ng-show="mobilePhone" flex>{{ mobilePhone }}</div>
+                <div ng-show="!mobilePhone" flex><i>no data</i></div>
+            </div>
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+            <md-button ng-show="!polling" ng-click="startPolling()" md-no-ink class="md-primary">start Polling
+            </md-button>
+            <md-button ng-show="polling" ng-click="stopPolling()" md-no-ink class="md-warn">stop Polling</md-button>
+        </md-card-actions>
+    </md-card>
+    <div layout-xs="column" layout="column" flex-gt-xs="55">
+        <md-card>
+            <md-progress-linear ng-show="polling && policyload" md-mode="query"></md-progress-linear>
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">Policies</span>
+                </md-card-title-text>
+            </md-card-title>
+            <md-card-content layout-align="start">
+                <div ng-show="!policy"><i>No data</i></div>
+                <div ng-show="policy">
+                    <div layout="row">
+                        <div flex="20"><strong>Policy No.:</strong></div>
+                        <div flex>{{ policy.ca_policy_num }}</div>
+                    </div>
+                    <br>
+                    <div layout="row">
+                        <div flex="20"><strong>Last Change:</strong></div>
+                        <div flex>{{ policyCommon.ca_lastchanged }}</div>
+                    </div>
+                    <br>
+                    <div layout="row">
+                        <div flex="20"><strong>Expiry:</strong></div>
+                        <div flex>{{ policyCommon.ca_expiry_date }}</div>
+                    </div>
+                    <br>
+                    <div layout="row">
+                        <div flex="20"><strong>Issue Date:</strong></div>
+                        <div flex>{{ policyCommon.ca_issue_date }}</div>
+                    </div>
+                    <br>
+                    <div layout="row">
+                        <div flex="20"><strong>Endowment:</strong></div>
+                        <div flex>{{ policyEndowment.ca_e_sum_assured }}</div>
+                    </div>
+                    <br>
+                    <div layout="row">
+                        <div flex="20"><strong>Name:</strong></div>
+                        <div flex>{{ policyEndowment.ca_e_fund_name }}</div>
+                    </div>
+                    <br>
+                    <div layout="row">
+                        <div flex="20"><strong>Life Assured:</strong></div>
+                        <div flex>{{ policyEndowment.ca_e_life_assured }}</div>
+                    </div>
+                </div>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-progress-linear ng-show="polling && !insurances" md-mode="query"></md-progress-linear>
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">Insurance Data</span>
+                </md-card-title-text>
+            </md-card-title>
+            <md-card-content layout-align="start">
+                <div ng-show="!insurances"><i>No data</i></div>
+                <md-list flex ng-show="insurances">
+                    <md-list-item class="secondary-button-padding" ng-repeat="item in insurances">
+                        <p>{{ item }}</p>
+                    </md-list-item>
+                </md-list>
+            </md-card-content>
+            <md-card-actions layout="row" layout-align="end center">
+                <md-button id="addData" ng-click="addData()" md-no-ink class="md-primary">Add Data</md-button>
+            </md-card-actions>
+        </md-card>
+    </div>
+    <md-card flex-gt-xs="15" style="background-color: #E0E0E0;">
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">Info</span>
+            </md-card-title-text>
+        </md-card-title>
+        <md-card-content layout="column" layout-align="start">
+            <i ng-show="!customerno" style="color: #F44336;">- no Service</i>
+            <i ng-show="customerno" style="color: #4CAF50;">- Service up</i>
+        </md-card-content>
+    </md-card>
+</div>
+
+<md-button ng-click="openUserAdd()" class="md-fab md-warn" id="fabUser" aria-label="Add a user">
+    <md-tooltip md-direction="top" hide show-gt-md>Add a user</md-tooltip>
+    <md-icon md-font-set="material-icons"> add</md-icon>
+</md-button>
+
+<md-button ng-click="openSearch()" class="md-fab md-warn" id="fabSearch" aria-label="Search for customer">
+    <md-tooltip md-direction="top" hide show-gt-md>Search for customer</md-tooltip>
+    <md-icon md-font-set="material-icons"> search</md-icon>
+</md-button>

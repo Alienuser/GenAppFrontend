@@ -1,0 +1,38 @@
+body, #content {
+    background-color: #eee;
+}
+
+md-toolbar:not(.md-menu-toolbar) {
+    background-color: #152935;
+}
+
+md-card-content i {
+    color: grey;
+}
+
+#toolbarNavigation {
+    background-color: white;
+}
+
+#toolbarNavigation > .md-toolbar-tools {
+    color: black;
+}
+
+#spinner {
+    position: fixed;
+    z-index: 99;
+    left: calc(50% - 46px);
+    top: calc(50% - 46px);
+}
+
+#fabUser {
+    position: fixed;
+    bottom: 16px;
+    right: 80px;
+}
+
+#fabSearch {
+    position: fixed;
+    bottom: 16px;
+    right: 16px;
+}

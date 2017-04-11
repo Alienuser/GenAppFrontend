@@ -1,0 +1,57 @@
+<md-dialog style="min-width: 500px;">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Add a user</h2>
+        </div>
+    </md-toolbar>
+    <md-dialog-content>
+        <div class="md-dialog-content" layout="column">
+            <p>Please fill out the following form.</p>
+            <md-input-container>
+                <label>Firstname</label>
+                <input ng-model="firstname" md-autofocus>
+            </md-input-container>
+            <md-input-container>
+                <label>Lastname</label>
+                <input ng-model="lastname">
+            </md-input-container>
+            <md-input-container>
+                <label>Birthday</label>
+                <input ng-model="birthday">
+            </md-input-container>
+            <md-input-container>
+                <label>Birthmonth</label>
+                <input ng-model="birthmonth">
+            </md-input-container>
+            <md-input-container>
+                <label>Birthyear</label>
+                <input ng-model="birthyear">
+            </md-input-container>
+            <md-input-container>
+                <label>Mobilephone</label>
+                <input ng-model="mobilephone">
+            </md-input-container>
+            <md-input-container>
+                <label>Streetname</label>
+                <input ng-model="housename">
+            </md-input-container>
+            <md-input-container>
+                <label>House number</label>
+                <input ng-model="housenumber">
+            </md-input-container>
+            <md-input-container>
+                <label>Postcode</label>
+                <input ng-model="postcode">
+            </md-input-container>
+            <md-input-container>
+                <label>eMail</label>
+                <input ng-model="email">
+            </md-input-container>
+        </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+        <md-button class="md-primary" ng-click="add()">
+            Add user
+        </md-button>
+    </md-dialog-actions>
+</md-dialog>

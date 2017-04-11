@@ -1,0 +1,13 @@
+{
+  "name": "genappfrontend",
+  "description": "A frontend for the genapp.",
+  "version": "0.1.0",
+  "authors": [
+    "Lars Helmuth Probst <larshprobst@de.ibm.com>"
+  ],
+  "dependencies": {
+    "angular-material": "*",
+    "angular-route": "*",
+    "angular-hotkeys": "chieffancypants/angular-hotkeys#*"
+  }
+}
