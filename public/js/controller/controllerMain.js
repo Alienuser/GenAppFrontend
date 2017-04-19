@@ -30,12 +30,15 @@
         function startPolling() {
             // Indicator for loading
             $scope.polling = true;
+            $scope.userload = true;
             $scope.policyload = true;
             interval = $interval(pollApi, 1500);
         }
 
         function stopPolling() {
             $scope.polling = false;
+            $scope.userload = false;
+            $scope.policyload = false;
             $interval.cancel(interval);
         }
 
@@ -50,11 +53,13 @@
                     }
                     // Set the data
                     $scope.customer = response.data.data;
+                    $scope.userload = false;
                 }, function errorCallback(response) {
                     if (showToast) {
                         $mdToast.showSimple("Error: No data.");
                         showToast = false;
                     }
+                    $scope.userload = false;
                 });
 
             Api.getInsuranceData()
