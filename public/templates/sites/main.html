@@ -1,6 +1,6 @@
 <div layout-xs="column" layout-align-xs="start stretch" layout="row" layout-align="center start" flex>
     <md-card flex-gt-xs="30">
-        <md-progress-linear ng-show="polling && userload" md-mode="query"></md-progress-linear>
+        <md-progress-linear ng-show="polling && loadUser" md-mode="query"></md-progress-linear>
         <md-card-title>
             <md-card-title-text>
                 <span class="md-headline">Customer data</span>
@@ -33,7 +33,9 @@
             <br>
             <div layout="row">
                 <div flex="40"><strong>Birthday:</strong></div>
-                <div ng-show="customer.birthDay" flex>{{ customer.birthDay }}.{{ customer.birthMonth }}.{{ customer.birthYear }}</div>
+                <div ng-show="customer.birthDay" flex>{{ customer.birthDay }}.{{ customer.birthMonth }}.{{
+                    customer.birthYear }}
+                </div>
                 <div ng-show="!customer.birthDay" flex><i>no data</i></div>
             </div>
             <br>
@@ -57,7 +59,7 @@
     </md-card>
     <div layout-xs="column" layout="column" flex-gt-xs="55">
         <md-card>
-            <md-progress-linear ng-show="polling && policyload" md-mode="query"></md-progress-linear>
+            <md-progress-linear ng-show="polling && loadPolicy" md-mode="query"></md-progress-linear>
             <md-card-title>
                 <md-card-title-text>
                     <span class="md-headline">Policies</span>
@@ -104,7 +106,7 @@
             </md-card-content>
         </md-card>
         <md-card>
-            <md-progress-linear ng-show="polling && !insurances" md-mode="query"></md-progress-linear>
+            <md-progress-linear ng-show="polling && loadInsurance" md-mode="query"></md-progress-linear>
             <md-card-title>
                 <md-card-title-text>
                     <span class="md-headline">Insurance Data</span>

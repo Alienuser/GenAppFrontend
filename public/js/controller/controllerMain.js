@@ -30,15 +30,17 @@
         function startPolling() {
             // Indicator for loading
             $scope.polling = true;
-            $scope.userload = true;
-            $scope.policyload = true;
+            $scope.loadUser = true;
+            $scope.loadPolicy = true;
+            $scope.loadInsurance = true;
             interval = $interval(pollApi, 1500);
         }
 
         function stopPolling() {
             $scope.polling = false;
-            $scope.userload = false;
-            $scope.policyload = false;
+            $scope.loadUser = false;
+            $scope.loadPolicy = false;
+            $scope.loadInsurance = false;
             $interval.cancel(interval);
         }
 
@@ -53,24 +55,13 @@
                     }
                     // Set the data
                     $scope.customer = response.data.data;
-                    $scope.userload = false;
+                    $scope.loadUser = false;
                 }, function errorCallback(response) {
                     if (showToast) {
                         $mdToast.showSimple("Error: No data.");
                         showToast = false;
                     }
-                    $scope.userload = false;
-                });
-
-            Api.getInsuranceData()
-                .then(function (response) {
-                    $scope.insurances = response.data;
-                }, function errorCallback(response) {
-                    if (showToast) {
-                        $mdToast.showSimple("Couldn't load insurance data.");
-                        showToast = false;
-                    }
-                    $scope.insurances = null;
+                    $scope.loadUser = false;
                 });
 
             Api.getPolicy(customerID, 4)
@@ -78,12 +69,25 @@
                     $scope.policy = response.data.LGIPOL01OperationResponse.commarea.ca_policy_request;
                     $scope.policyCommon = response.data.LGIPOL01OperationResponse.commarea.ca_policy_request.ca_policy_common;
                     $scope.policyEndowment = response.data.LGIPOL01OperationResponse.commarea.ca_policy_request.ca_endowment;
-                    $scope.policyload = false;
+                    $scope.loadInsurance = false;
                 }, function errorCallback(response) {
                     $scope.policy = "";
                     $scope.policyCommon = "";
                     $scope.policyEndowment = "";
-                    $scope.policyload = false;
+                    $scope.loadInsurance = false;
+                });
+
+            Api.getInsuranceData()
+                .then(function (response) {
+                    $scope.insurances = response.data;
+                    $scope.loadPolicy = false;
+                }, function errorCallback(response) {
+                    if (showToast) {
+                        $mdToast.showSimple("Couldn't load insurance data.");
+                        showToast = false;
+                    }
+                    $scope.insurances = null;
+                    $scope.loadPolicy = false;
                 });
         }
 
