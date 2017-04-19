@@ -111,8 +111,8 @@
                 </md-card-title-text>
             </md-card-title>
             <md-card-content layout-align="start">
-                <div ng-show="!insurances"><i>No data</i></div>
-                <md-list flex ng-show="insurances">
+                <div ng-show="insurances == null"><i>No data</i></div>
+                <md-list flex ng-show="insurances != null">
                     <md-list-item class="secondary-button-padding" ng-repeat="item in insurances">
                         <p>{{ item }}</p>
                     </md-list-item>

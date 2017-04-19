@@ -75,6 +75,9 @@
                     $scope.policyEndowment = response.data.LGIPOL01OperationResponse.commarea.ca_policy_request.ca_endowment;
                     $scope.policyload = false;
                 }, function errorCallback(response) {
+                    $scope.policy = "";
+                    $scope.policyCommon = "";
+                    $scope.policyEndowment = "";
                     $scope.policyload = false;
                 });
         }
@@ -131,7 +134,7 @@
                     $scope.search = function () {
                         customerID = $scope.customerID;
                         $rootScope.stopPolling();
-                        pollApi();
+                        startPolling();
                         var msg = new SpeechSynthesisUtterance('Search for customer with number. ' + $scope.customerID);
                         msg.lang = 'en-US';
                         window.speechSynthesis.speak(msg);
