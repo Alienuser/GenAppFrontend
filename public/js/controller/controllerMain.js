@@ -54,7 +54,7 @@
                         speak = false;
                     }
                     // Set the data
-                    $scope.customer = response.data.data;
+                    $scope.customer = response.data.customer;
                     $scope.loadUser = false;
                 }, function errorCallback(response) {
                     if (showToast) {
@@ -77,9 +77,9 @@
                     $scope.loadInsurance = false;
                 });
 
-            Api.getInsuranceData()
+            Api.getInsuranceData(customerID)
                 .then(function (response) {
-                    $scope.insurances = response.data;
+                    $scope.insurances = response.data.insurance;
                     $scope.loadPolicy = false;
                 }, function errorCallback(response) {
                     if (showToast) {

@@ -1,6 +1,6 @@
 <div layout-xs="column" layout-align-xs="start stretch" layout="row" layout-align="center start" flex>
     <md-card flex-gt-xs="30">
-        <md-progress-linear ng-show="polling && loadUser" md-mode="query"></md-progress-linear>
+        <md-progress-linear id="customer" ng-show="polling && loadUser" md-mode="query"></md-progress-linear>
         <md-card-title>
             <md-card-title-text>
                 <span class="md-headline">Customer data</span>
@@ -59,7 +59,7 @@
     </md-card>
     <div layout-xs="column" layout="column" flex-gt-xs="55">
         <md-card>
-            <md-progress-linear ng-show="polling && loadPolicy" md-mode="query"></md-progress-linear>
+            <md-progress-linear id="policy" ng-show="polling && loadPolicy" md-mode="query"></md-progress-linear>
             <md-card-title>
                 <md-card-title-text>
                     <span class="md-headline">Policies</span>
@@ -106,7 +106,7 @@
             </md-card-content>
         </md-card>
         <md-card>
-            <md-progress-linear ng-show="polling && loadInsurance" md-mode="query"></md-progress-linear>
+            <md-progress-linear id="insurance" ng-show="polling && loadInsurance" md-mode="query"></md-progress-linear>
             <md-card-title>
                 <md-card-title-text>
                     <span class="md-headline">Insurance Data</span>
@@ -115,8 +115,11 @@
             <md-card-content layout-align="start">
                 <div ng-show="insurances == null"><i>No data</i></div>
                 <md-list flex ng-show="insurances != null">
-                    <md-list-item class="secondary-button-padding" ng-repeat="item in insurances">
-                        <p>{{ item }}</p>
+                    <md-list-item class="md-2-line" ng-repeat="item in insurances | orderBy: '-time'">
+                        <div class="md-list-item-text">
+                            <h3>{{ item.time }}</h3>
+                            <p>{{ item.data }}</p>
+                        </div>
                     </md-list-item>
                 </md-list>
             </md-card-content>
