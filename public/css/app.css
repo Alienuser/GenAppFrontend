@@ -10,6 +10,18 @@ md-card-content i {
     color: grey;
 }
 
+#customer .md-bar {
+    background-color: #F44336;
+}
+
+#policy .md-bar {
+    background-color: #9C27B0;
+}
+
+#insurance .md-bar {
+    background-color: #4CAF50;
+}
+
 #toolbarNavigation {
     background-color: white;
 }

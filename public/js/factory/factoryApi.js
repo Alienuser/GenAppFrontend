@@ -2,20 +2,21 @@ app.factory('Api', ['$http', 'api', function ($http, api) {
 
     var Api = {};
 
-    Api.getCustomerData = function (id) {
+    Api.getCustomerData = function (uid) {
         return $http({
             method: 'GET',
-            url: api.restAPI + 'service/customers/' + id
+            url: api.restAPI + 'service/customers/' + uid
         });
     };
 
-    Api.getInsuranceData = function () {
+    Api.getInsuranceData = function (uid) {
         return $http({
             method: 'GET',
-            url: api.restAPI + 'service/customers/insurance'
+            url: api.restAPI + 'service/customers/' + uid + '/insurance'
         });
     };
 
+    // TODO Get info (customer -> policy) from DB2 REST
     Api.getPolicy = function (uid, pid) {
         return $http({
             method: 'GET',
