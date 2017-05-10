@@ -1,7 +1,7 @@
 {
   "name": "genappfrontend",
   "description": "A frontend for the GenApp.",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "authors": [
     "Lars Helmuth Probst <larshprobst@de.ibm.com>"
   ],
@@ -13,6 +13,7 @@
   "scripts": {
     "start": "node app.js",
     "lite": "node_modules/lite-server/bin/lite-server",
+    "test": "node_modules/casperjs/bin/casperjs test ./tests/",
     "postinstall": "node_modules/bower/bin/bower install"
   },
   "dependencies": {
@@ -20,7 +21,16 @@
     "bower": "*",
     "cfenv": "*",
     "express": "*",
-    "karma": "*",
     "lite-server": "*"
+  },
+  "devDependencies": {
+    "casperjs": "*",
+    "jasmine-core": "*",
+    "karma": "*",
+    "karma-jasmine": "*",
+    "karma-phantomjs-launcher": "*",
+    "karma-browserify": "*",
+    "browserify": "*",
+    "watchify": "*"
   }
 }

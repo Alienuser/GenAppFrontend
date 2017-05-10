@@ -10,14 +10,10 @@
  * @link http://www.Lars-Probst.de
  ******************************************************************************/
 
-(function () {
+casper.start('https://genappfrontend.mybluemix.net/');
 
-    app.controller('controllerSidenav', function ($rootScope, $scope, $location) {
+casper.then(function() {
+    this.echo('Title from page: ' + this.getTitle());
+});
 
-        $scope.menuCustomerData = function () {
-            $location.path("/");
-            $rootScope.toggleMenu();
-        };
-
-    });
-})();
+casper.run();
