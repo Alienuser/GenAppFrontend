@@ -21,10 +21,10 @@
     "bower": "*",
     "cfenv": "*",
     "express": "*",
-    "lite-server": "*"
+    "lite-server": "*",
+    "casperjs": "*"
   },
   "devDependencies": {
-    "casperjs": "*",
     "jasmine-core": "*",
     "karma": "*",
     "karma-jasmine": "*",
