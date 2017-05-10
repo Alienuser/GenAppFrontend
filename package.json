@@ -23,14 +23,5 @@
     "express": "*",
     "lite-server": "*",
     "casperjs": "*"
-  },
-  "devDependencies": {
-    "jasmine-core": "*",
-    "karma": "*",
-    "karma-jasmine": "*",
-    "karma-phantomjs-launcher": "*",
-    "karma-browserify": "*",
-    "browserify": "*",
-    "watchify": "*"
   }
 }
