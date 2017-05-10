@@ -10,10 +10,12 @@
  * @link http://www.Lars-Probst.de
  ******************************************************************************/
 
-casper.start('https://genappfrontend.mybluemix.net/');
+casper.test.begin('Test the Dashboard', 1, function suite(test) {
+    casper.start("https://genappfrontend.mybluemix.net/#!/", function () {
+        test.assertTitle("GenApp Frontend");
+    });
 
-casper.then(function() {
-    this.echo('Title from page: ' + this.getTitle());
+    casper.run(function () {
+        test.done();
+    });
 });
-
-casper.run();
