@@ -10,7 +10,7 @@
  * @link http://www.Lars-Probst.de
  ******************************************************************************/
 
-var app = angular.module('gaf', ['ngMaterial', 'ngRoute', 'cfp.hotkeys']);
+var app = angular.module('gaf', ['ngMaterial', 'ngRoute', 'cfp.hotkeys', 'angularjs-gauge']);
 
 // Define all constants.
 app.constant('api', {

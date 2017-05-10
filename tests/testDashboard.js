@@ -11,6 +11,7 @@
  ******************************************************************************/
 
 casper.test.begin('Test the Dashboard', 1, function suite(test) {
+
     casper.start("https://genappfrontend.mybluemix.net/#!/", function () {
         test.assertTitle("GenApp Frontend");
     });
@@ -18,4 +19,5 @@ casper.test.begin('Test the Dashboard', 1, function suite(test) {
     casper.run(function () {
         test.done();
     });
+
 });
