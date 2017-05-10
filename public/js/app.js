@@ -1,4 +1,4 @@
-var app = angular.module('gaf', ['ngMaterial', 'ngRoute', 'angularjs-gauge', 'cfp.hotkeys']);
+var app = angular.module('gaf', ['ngMaterial', 'ngRoute', 'cfp.hotkeys']);
 
 // Define all constants.
 app.constant('api', {
