@@ -33,6 +33,7 @@
             $scope.loadUser = true;
             $scope.loadPolicy = true;
             $scope.loadInsurance = true;
+            $scope.loadClientvalue = true;
             interval = $interval(pollApi, 1500);
         }
 
@@ -41,6 +42,7 @@
             $scope.loadUser = false;
             $scope.loadPolicy = false;
             $scope.loadInsurance = false;
+            $scope.loadClientvalue = false;
             $interval.cancel(interval);
         }
 
@@ -88,6 +90,15 @@
                     }
                     $scope.insurances = null;
                     $scope.loadPolicy = false;
+                });
+
+            Api.getClientValue(customer)
+                .then(function (response) {
+                    $scope.clientvalue = 65;
+                    $scope.loadClientvalue = false;
+                }, function errorCallback(response) {
+                    $scope.clientvalue = 65;
+                    $scope.loadClientvalue = false;
                 });
         }
 
@@ -172,5 +183,6 @@
                 }
             });
         };
+
     });
 })();

@@ -10,25 +10,25 @@
             <div layout="row">
                 <div flex="40"><strong>Customer no.:</strong></div>
                 <div ng-show="customer.customerNumber" flex>{{ customer.customerNumber }}</div>
-                <div ng-show="!customer.customerNumber" flex><i>no data</i></div>
+                <div ng-show="!customer.customerNumber" flex><i>no data available</i></div>
             </div>
             <br>
             <div layout="row">
                 <div flex="40"><strong>Firstname:</strong></div>
                 <div ng-show="customer.firstName" flex>{{ customer.firstName }}</div>
-                <div ng-show="!customer.firstName" flex><i>no data</i></div>
+                <div ng-show="!customer.firstName" flex><i>no data available</i></div>
             </div>
             <br>
             <div layout="row">
                 <div flex="40"><strong>Lastname:</strong></div>
                 <div ng-show="customer.lastName" flex>{{ customer.lastName }}</div>
-                <div ng-show="!customer.lastName" flex><i>no data</i></div>
+                <div ng-show="!customer.lastName" flex><i>no data available</i></div>
             </div>
             <br>
             <div layout="row">
                 <div flex="40"><strong>eMail:</strong></div>
                 <div ng-show="customer.emailAddress" flex>{{ customer.emailAddress }}</div>
-                <div ng-show="!customer.emailAddress" flex><i>no data</i></div>
+                <div ng-show="!customer.emailAddress" flex><i>no data available</i></div>
             </div>
             <br>
             <div layout="row">
@@ -36,19 +36,19 @@
                 <div ng-show="customer.birthDay" flex>{{ customer.birthDay }}.{{ customer.birthMonth }}.{{
                     customer.birthYear }}
                 </div>
-                <div ng-show="!customer.birthDay" flex><i>no data</i></div>
+                <div ng-show="!customer.birthDay" flex><i>no data available</i></div>
             </div>
             <br>
             <div layout="row">
                 <div flex="40"><strong>Address:</strong></div>
                 <div ng-show="customer.postCode" flex>{{ customer.postCode }}</div>
-                <div ng-show="!customer.postCode" flex><i>no data</i></div>
+                <div ng-show="!customer.postCode" flex><i>no data available</i></div>
             </div>
             <br>
             <div layout="row">
                 <div flex="40"><strong>Mobilephone:</strong></div>
                 <div ng-show="customer.mobilePhone" flex>{{ customer.mobilePhone }}</div>
-                <div ng-show="!customer.mobilePhone" flex><i>no data</i></div>
+                <div ng-show="!customer.mobilePhone" flex><i>no data available</i></div>
             </div>
         </md-card-content>
         <md-card-actions layout="row" layout-align="end center">
@@ -66,7 +66,7 @@
                 </md-card-title-text>
             </md-card-title>
             <md-card-content layout-align="start">
-                <div ng-show="!policy"><i>No data</i></div>
+                <div ng-show="!policy"><i>no data available</i></div>
                 <div ng-show="policy">
                     <div layout="row">
                         <div flex="20"><strong>Policy No.:</strong></div>
@@ -113,7 +113,7 @@
                 </md-card-title-text>
             </md-card-title>
             <md-card-content layout-align="start">
-                <div ng-show="insurances == null"><i>No data</i></div>
+                <div ng-show="insurances == null"><i>no data available</i></div>
                 <md-list flex ng-show="insurances != null">
                     <md-list-item class="md-2-line" ng-repeat="item in insurances | orderBy: '-time'">
                         <div class="md-list-item-text">
@@ -124,29 +124,31 @@
                 </md-list>
             </md-card-content>
             <md-card-actions layout="row" layout-align="end center">
-                <md-button id="addData" ng-click="addData()" md-no-ink class="md-primary">Add Data</md-button>
+                <!--<md-button id="addData" ng-click="addData()" md-no-ink class="md-primary">Add Data</md-button>-->
             </md-card-actions>
         </md-card>
     </div>
-    <md-card flex-gt-xs="15" style="background-color: #E0E0E0;">
+    <md-card flex-gt-xs="15">
+        <md-progress-linear id="clientvalue" ng-show="polling && loadClientvalue" md-mode="query"></md-progress-linear>
         <md-card-title>
             <md-card-title-text>
-                <span class="md-headline">Info</span>
+                <span class="md-headline">Machine Learning</span>
             </md-card-title-text>
         </md-card-title>
         <md-card-content layout="column" layout-align="start">
-            <i ng-show="!customer.customerNumber" style="color: #F44336;">- no Service</i>
-            <i ng-show="customer.customerNumber" style="color: #4CAF50;">- Service up</i>
+            <div ng-show="clientvalue == null"><i>no data available</i></div>
+            <ng-gauge ng-show="clientvalue != null" value="clientvalue" total="100" cap="round" thick="10" type="semi" label="client value"
+                      foreground-color="#ffcc66" append="%"></ng-gauge>
         </md-card-content>
     </md-card>
 </div>
 
-<md-button ng-click="openUserAdd()" class="md-fab md-warn" id="fabUser" aria-label="Add a user">
-    <md-tooltip md-direction="top" hide show-gt-md>Add a user</md-tooltip>
+<md-button ng-click="openUserAdd()" class="md-fab md-warn" id="fabUser" aria-label="Add a client">
+    <md-tooltip md-direction="top" hide show-gt-md>Add a client</md-tooltip>
     <md-icon md-font-set="material-icons"> add</md-icon>
 </md-button>
 
-<md-button ng-click="openSearch()" class="md-fab md-warn" id="fabSearch" aria-label="Search for customer">
-    <md-tooltip md-direction="top" hide show-gt-md>Search for customer</md-tooltip>
+<md-button ng-click="openSearch()" class="md-fab md-warn" id="fabSearch" aria-label="Search for client">
+    <md-tooltip md-direction="top" hide show-gt-md>Search for client</md-tooltip>
     <md-icon md-font-set="material-icons"> search</md-icon>
 </md-button>

@@ -1,6 +1,6 @@
 {
   "name": "genappfrontend",
-  "description": "A frontend for the genapp.",
+  "description": "A frontend for the GenApp.",
   "version": "0.1.0",
   "authors": [
     "Lars Helmuth Probst <larshprobst@de.ibm.com>"
@@ -16,10 +16,11 @@
     "postinstall": "node_modules/bower/bin/bower install"
   },
   "dependencies": {
-    "express": "*",
-    "cfenv": "*",
+    "bluemix-autoscaling-agent": "*",
     "bower": "*",
-    "lite-server": "*",
-    "bluemix-autoscaling-agent": "*"
+    "cfenv": "*",
+    "express": "*",
+    "karma": "*",
+    "lite-server": "*"
   }
 }

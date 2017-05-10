@@ -41,5 +41,6 @@
                 closeTo: angular.element(document.querySelector('#toolbarMenu'))
             });
         };
+
     });
 })();

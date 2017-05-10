@@ -1,5 +1,5 @@
 body, #content {
-    background-color: #eee;
+    background-color: #E0E0E0;
 }
 
 md-toolbar:not(.md-menu-toolbar) {
@@ -7,7 +7,7 @@ md-toolbar:not(.md-menu-toolbar) {
 }
 
 md-card-content i {
-    color: grey;
+    color: #9E9E9E;
 }
 
 #customer .md-bar {
@@ -22,8 +22,12 @@ md-card-content i {
     background-color: #4CAF50;
 }
 
+#clientvalue .md-bar {
+    background-color: #00BCD4;
+}
+
 #toolbarNavigation {
-    background-color: white;
+    background-color: #F5F5F5;
 }
 
 #toolbarNavigation > .md-toolbar-tools {

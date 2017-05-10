@@ -1,51 +1,51 @@
-<md-dialog style="min-width: 500px;">
+<md-dialog aria-label="Add Client" style="min-width: 350px;">
     <md-toolbar>
         <div class="md-toolbar-tools">
-            <h2>Add a user</h2>
+            <h2>Add a client</h2>
         </div>
     </md-toolbar>
     <md-dialog-content>
         <div class="md-dialog-content" layout="column">
             <p>Please fill out the following form.</p>
-            <md-input-container>
+            <md-input-container class="md-block">
                 <label>Firstname</label>
-                <input ng-model="firstname" md-autofocus>
+                <input ng-model="firstname" ng-required="true" md-autofocus>
             </md-input-container>
-            <md-input-container>
+            <md-input-container class="md-icon-float md-block">
                 <label>Lastname</label>
-                <input ng-model="lastname">
+                <input ng-model="lastname" ng-required="true">
             </md-input-container>
-            <md-input-container>
+            <md-input-container class="md-icon-float md-block">
                 <label>Birthday</label>
-                <input ng-model="birthday">
+                <input ng-model="birthday" ng-required="true">
             </md-input-container>
-            <md-input-container>
+            <md-input-container class="md-icon-float md-block">
                 <label>Birthmonth</label>
-                <input ng-model="birthmonth">
+                <input ng-model="birthmonth" ng-required="true">
             </md-input-container>
-            <md-input-container>
+            <md-input-container class="md-icon-float md-block">
                 <label>Birthyear</label>
-                <input ng-model="birthyear">
+                <input ng-model="birthyear" ng-required="true">
             </md-input-container>
-            <md-input-container>
+            <md-input-container class="md-icon-float md-block">
                 <label>Mobilephone</label>
-                <input ng-model="mobilephone">
+                <input ng-model="mobilephone" ng-required="true">
             </md-input-container>
-            <md-input-container>
+            <md-input-container class="md-icon-float md-block">
                 <label>Streetname</label>
-                <input ng-model="housename">
+                <input ng-model="housename" ng-required="true">
             </md-input-container>
-            <md-input-container>
+            <md-input-container class="md-icon-float md-block">
                 <label>House number</label>
-                <input ng-model="housenumber">
+                <input ng-model="housenumber" ng-required="true">
             </md-input-container>
-            <md-input-container>
+            <md-input-container class="md-icon-float md-block">
                 <label>Postcode</label>
-                <input ng-model="postcode">
+                <input ng-model="postcode" ng-required="true">
             </md-input-container>
-            <md-input-container>
+            <md-input-container class="md-icon-float md-block">
                 <label>eMail</label>
-                <input ng-model="email">
+                <input ng-model="email" ng-required="true">
             </md-input-container>
         </div>
     </md-dialog-content>
@@ -54,7 +54,7 @@
             Cancel
         </md-button>
         <md-button class="md-primary" ng-click="add()">
-            Add user
+            Add client
         </md-button>
     </md-dialog-actions>
 </md-dialog>

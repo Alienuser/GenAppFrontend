@@ -54,5 +54,12 @@ app.factory('Api', ['$http', 'api', function ($http, api) {
         });
     };
 
+    Api.getClientValue = function (customerID) {
+        return $http({
+            method: 'GET',
+            url: api.restAPI + ''
+        });
+    };
+
     return Api;
 }]);
