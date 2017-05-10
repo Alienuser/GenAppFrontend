@@ -19,12 +19,14 @@ npm install
 After that you should have two new folders:
 ```html
 ./node_modules
-./app/lib/
+./public/lib/
 ```
 
 To run the application locally on your machine type in the following:
 ```html
 npm run lite
 ```
+
+This should open a browser and display the dashboard.
 
 ## Install on Bluemix
