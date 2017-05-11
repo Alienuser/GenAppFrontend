@@ -14,9 +14,8 @@
 
     app.controller('controllerToolbar', function ($rootScope, $scope, $mdDialog) {
 
-        $scope.openMenu = function ($mdMenu, ev) {
-            originatorEv = ev;
-            $mdMenu.open(ev);
+        $scope.openMenu = function ($mdMenu) {
+            $mdMenu.open();
         };
 
         $rootScope.settings = function () {

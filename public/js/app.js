@@ -70,6 +70,13 @@ app.run(function ($rootScope, $location, hotkeys, $timeout, $mdSidenav) {
             }
         })
         .add({
+            combo: 'n',
+            description: 'Open the sidenav.',
+            callback: function () {
+                $rootScope.toggleMenu();
+            }
+        })
+        .add({
             combo: '#',
             description: 'Open the settings.',
             callback: function () {

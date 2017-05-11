@@ -117,7 +117,7 @@
         function addUser(lastname, birthyear, mobilephone, housename, birthmonth, postcode, email, housenumber, birthday, firstname) {
             Api.addUser(lastname, parseInt(birthyear), mobilephone, housename, parseInt(birthmonth), parseInt(1), postcode, email, parseInt(housenumber), parseInt(birthday), firstname)
                 .then(function (response) {
-                    $mdToast.showSimple("Added customer successfully. Customer no.: " + response.data.data.customerNumber);
+                    $mdToast.showSimple("Customer successfully added. Customer no.: " + response.data.customerNumber);
                 }, function errorCallback(response) {
                     $mdToast.showSimple("Could not add customer.");
                 });
@@ -133,7 +133,7 @@
                 });
         }
 
-        $scope.addData = function () {
+        $scope.openAddData = function () {
             $mdDialog.show({
                 templateUrl: 'templates/modal/addData.html',
                 clickOutsideToClose: true,
@@ -177,7 +177,7 @@
             });
         };
 
-        $rootScope.openUserAdd = function () {
+        $rootScope.openAddCustomer = function () {
             $mdDialog.show({
                 templateUrl: 'templates/modal/addCustomer.html',
                 clickOutsideToClose: true,

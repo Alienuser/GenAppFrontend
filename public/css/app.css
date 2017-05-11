@@ -68,3 +68,8 @@ md-card-content i {
 #machineLearning > canvas {
     width: 100%;
 }
+
+#sidenavVersion {
+    padding: 10px;
+    font-size: 13px;
+}
