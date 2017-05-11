@@ -12,7 +12,7 @@
 
 (function () {
 
-    app.controller('controllerMain', function ($rootScope, $scope, $mdDialog, $mdToast, $interval, Api) {
+    app.controller('controllerMain', function ($rootScope, $scope, $mdDialog, $mdToast, $interval, $timeout, Api) {
 
         // Define some variables
         var interval;
@@ -72,7 +72,7 @@
                     $scope.loadUser = false;
                 }, function errorCallback(response) {
                     if (showToast) {
-                        $mdToast.showSimple("Error: No data.");
+                        $mdToast.showSimple("Error: Couldn't load data.");
                         showToast = false;
                     }
                     $scope.loadUser = false;
@@ -117,9 +117,9 @@
         function addUser(lastname, birthyear, mobilephone, housename, birthmonth, postcode, email, housenumber, birthday, firstname) {
             Api.addUser(lastname, parseInt(birthyear), mobilephone, housename, parseInt(birthmonth), parseInt(1), postcode, email, parseInt(housenumber), parseInt(birthday), firstname)
                 .then(function (response) {
-                    $mdToast.showSimple("Added user successfully. Customer no.: " + response.data.data.customerNumber);
+                    $mdToast.showSimple("Added customer successfully. Customer no.: " + response.data.data.customerNumber);
                 }, function errorCallback(response) {
-                    $mdToast.showSimple("Could not add user.");
+                    $mdToast.showSimple("Could not add customer.");
                 });
         }
 
@@ -179,10 +179,10 @@
 
         $rootScope.openUserAdd = function () {
             $mdDialog.show({
-                templateUrl: 'templates/modal/addUser.html',
+                templateUrl: 'templates/modal/addCustomer.html',
                 clickOutsideToClose: true,
-                openFrom: angular.element(document.querySelector('#fabUser')),
-                closeTo: angular.element(document.querySelector('#fabUser')),
+                openFrom: angular.element(document.querySelector('#fabCustomer')),
+                closeTo: angular.element(document.querySelector('#fabCustomer')),
                 controller: function ($scope) {
                     $scope.cancel = function () {
                         $mdDialog.hide();

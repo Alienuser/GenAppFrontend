@@ -66,6 +66,7 @@ app.factory('Api', ['$http', 'api', function ($http, api) {
         });
     };
 
+    // TODO: Change to the right backend
     Api.getClientValue = function (customerID) {
         return $http({
             method: 'GET',

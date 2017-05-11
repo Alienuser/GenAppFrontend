@@ -10,24 +10,26 @@
   ~ @link http://www.Lars-Probst.de
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
-<md-dialog aria-label="About" style="min-width: 450px;">
+<md-dialog aria-label="About" flex="40" flex-sm="80" flex-xs="90">
     <md-toolbar>
         <div class="md-toolbar-tools">
             <h2>About GenApp Frontend</h2>
         </div>
     </md-toolbar>
-    <md-dialog-content layout-padding>
-        <div layout="row">
-            <div flex="30"><strong>Autor</strong></div>
-            <div flex>Lars Helmuth Probst</div>
-        </div>
-        <div layout="row">
-            <div flex="30"><strong>eMail</strong></div>
-            <div flex><a href="mailto:larshprobst@de.ibm.com" target="_blank">larshprobst@de.ibm.com</a></div>
-        </div>
-        <div layout="row">
-            <div flex="30"><strong>Information</strong></div>
-            <div flex><a href="https://github.com/Alienuser/GenAppFrontend" target="_blank">GitHub</a></div>
+    <md-dialog-content>
+        <div class="md-dialog-content" layout-padding>
+            <div layout="row">
+                <div flex="20" flex-md="50" flex-xs="35"><strong>Author:</strong></div>
+                <div flex>Lars Helmuth Probst</div>
+            </div>
+            <div layout="row">
+                <div flex="20" flex-md="50" flex-xs="35"><strong>eMail:</strong></div>
+                <div flex><a href="mailto:larshprobst@de.ibm.com" target="_blank">larshprobst@de.ibm.com</a></div>
+            </div>
+            <div layout="row">
+                <div flex="20" flex-md="50" flex-xs="35"><strong>Information:</strong></div>
+                <div flex><a href="https://github.com/Alienuser/GenAppFrontend" target="_blank">GitHub</a></div>
+            </div>
         </div>
     </md-dialog-content>
     <md-dialog-actions layout="row">
