@@ -4,7 +4,7 @@
  * Unauthorized copying of this file, via any medium is strictly prohibited.
  * This file is part of the project GenAppFrontend.
  *
- * @version 1.0.0 Release
+ * @version 1.0.1 Release
  * @author Lars Helmuth Probst (Alienuser)
  * @copyright 2017 Lars Helmuth Probst
  * @link http://www.Lars-Probst.de
@@ -115,7 +115,7 @@
                     $scope.loadPolicy = false;
                 });
 
-            Api.getClientValue(customer)
+            Api.getCustomerValue(customer)
                 .then(function (response) {
                     $scope.clientvalue = 65;
                     $scope.loadClientvalue = false;
@@ -125,8 +125,8 @@
                 });
         }
 
-        function addUser(lastname, birthyear, mobilephone, housename, birthmonth, postcode, email, housenumber, birthday, firstname) {
-            Api.addUser(lastname, parseInt(birthyear), mobilephone, housename, parseInt(birthmonth), parseInt(1), postcode, email, parseInt(housenumber), parseInt(birthday), firstname)
+        function addCustomer(lastname, birthyear, mobilephone, housename, birthmonth, postcode, email, housenumber, birthday, firstname) {
+            Api.addCustomer(lastname, parseInt(birthyear), mobilephone, housename, parseInt(birthmonth), parseInt(1), postcode, email, parseInt(housenumber), parseInt(birthday), firstname)
                 .then(function (response) {
                     $mdToast.showSimple("Customer successfully added. Customer no.: " + response.data.customerNumber);
                 }, function errorCallback(response) {
@@ -200,7 +200,7 @@
                     };
 
                     $scope.add = function () {
-                        addUser($scope.lastname, $scope.birthyear, $scope.mobilephone, $scope.housename, $scope.birthmonth, $scope.postcode, $scope.email, $scope.housenumber, $scope.birthday, $scope.firstname);
+                        addCustomer($scope.lastname, $scope.birthyear, $scope.mobilephone, $scope.housename, $scope.birthmonth, $scope.postcode, $scope.email, $scope.housenumber, $scope.birthday, $scope.firstname);
                         $mdDialog.hide();
                     };
                 }

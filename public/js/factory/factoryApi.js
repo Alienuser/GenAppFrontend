@@ -4,7 +4,7 @@
  * Unauthorized copying of this file, via any medium is strictly prohibited.
  * This file is part of the project GenAppFrontend.
  *
- * @version 1.0.0 Release
+ * @version 1.0.1 Release
  * @author Lars Helmuth Probst (Alienuser)
  * @copyright 2017 Lars Helmuth Probst
  * @link http://www.Lars-Probst.de
@@ -46,7 +46,7 @@ app.factory('Api', ['$http', 'api', function ($http, api) {
         });
     };
 
-    Api.addUser = function (lastName, birthYear, mobilePhone, houseName, birthMonth, customerNumber, postCode, emailAddress, houseNumber, birthDay, firstName) {
+    Api.addCustomer = function (lastName, birthYear, mobilePhone, houseName, birthMonth, customerNumber, postCode, emailAddress, houseNumber, birthDay, firstName) {
         return $http({
             method: 'POST',
             url: api.restAPI + 'service/customers/',
@@ -67,7 +67,7 @@ app.factory('Api', ['$http', 'api', function ($http, api) {
     };
 
     // TODO: Change to the right backend
-    Api.getClientValue = function (customerID) {
+    Api.getCustomerValue = function (customerID) {
         return $http({
             method: 'GET',
             url: api.restAPI + ''
