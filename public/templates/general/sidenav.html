@@ -11,11 +11,7 @@
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
 <div ng-controller="controllerSidenav">
-    <md-sidenav
-            layout="column"
-            class="md-sidenav-left md-whiteframe-z2"
-            md-component-id="left"
-            md-is-locked-open="$mdMedia('')">
+    <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
 
         <md-toolbar class="md-theme-indigo" id="toolbarNavigation">
             <h1 class="md-toolbar-tools">Navigation</h1>
@@ -28,7 +24,9 @@
                 <p>Customer data</p>
             </md-list-item>
         </md-list>
+
         <div flex></div>
         <div id="sidenavVersion">Version 1.0.0</div>
+
     </md-sidenav>
 </div>

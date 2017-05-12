@@ -10,7 +10,7 @@
   ~ @link http://www.Lars-Probst.de
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
-<div layout="row" layout-sm="column" layout-xs="column" layout-align="start start" layout-align-sm="start stretch"
+<div layout="column" layout-gt-sm="rows" layout-align="start stretch" layout-align-gt-sm="start start"
      layout-align-xs="start stretch" flex>
     <md-card flex-gt-sm="30">
         <md-progress-linear id="customer" ng-show="polling && loadUser" md-mode="query"></md-progress-linear>
@@ -19,45 +19,39 @@
                 <span class="md-headline">Customer data</span>
             </md-card-title-text>
         </md-card-title>
-        <md-card-content layout="column">
+        <md-card-content layout="column" layout-padding>
             <div layout="row">
                 <div flex="40" flex-md="50"><strong>Customer no.:</strong></div>
                 <div ng-show="customer.customerNumber" flex>{{ customer.customerNumber }}</div>
                 <div ng-show="!customer.customerNumber" flex><i>no data available</i></div>
             </div>
-            <br>
             <div layout="row">
                 <div flex="40" flex-md="50"><strong>Firstname:</strong></div>
                 <div ng-show="customer.firstName" flex>{{ customer.firstName }}</div>
                 <div ng-show="!customer.firstName" flex><i>no data available</i></div>
             </div>
-            <br>
             <div layout="row">
                 <div flex="40" flex-md="50"><strong>Lastname:</strong></div>
                 <div ng-show="customer.lastName" flex>{{ customer.lastName }}</div>
                 <div ng-show="!customer.lastName" flex><i>no data available</i></div>
             </div>
-            <br>
             <div layout="row">
                 <div flex="40" flex-md="50"><strong>eMail:</strong></div>
                 <div ng-show="customer.emailAddress" flex>{{ customer.emailAddress }}</div>
                 <div ng-show="!customer.emailAddress" flex><i>no data available</i></div>
             </div>
-            <br>
             <div layout="row">
                 <div flex="40" flex-md="50"><strong>Birthday:</strong></div>
-                <div ng-show="customer.birthDay" flex>{{ customer.birthDay }}.{{ customer.birthMonth }}.{{
-                    customer.birthYear }}
+                <div ng-show="customer.birthDay" flex>{{ customer.birthDay }}.{{ customer.birthMonth
+                    }}.{{customer.birthYear }}
                 </div>
                 <div ng-show="!customer.birthDay" flex><i>no data available</i></div>
             </div>
-            <br>
             <div layout="row">
                 <div flex="40" flex-md="50"><strong>Address:</strong></div>
                 <div ng-show="customer.postCode" flex>{{ customer.postCode }}</div>
                 <div ng-show="!customer.postCode" flex><i>no data available</i></div>
             </div>
-            <br>
             <div layout="row">
                 <div flex="40" flex-md="50"><strong>Mobilephone:</strong></div>
                 <div ng-show="customer.mobilePhone" flex>{{ customer.mobilePhone }}</div>
@@ -78,7 +72,7 @@
                     <span class="md-headline">Policies</span>
                 </md-card-title-text>
             </md-card-title>
-            <md-card-content layout-align="start">
+            <md-card-content layout="column" layout-padding>
                 <div ng-show="!policy"><i>no data available</i></div>
                 <div ng-show="policy">
                     <div layout="row">
@@ -125,9 +119,9 @@
                     <span class="md-headline">Insurance Data</span>
                 </md-card-title-text>
             </md-card-title>
-            <md-card-content layout-align="start">
+            <md-card-content layout="column" layout-padding>
                 <div ng-show="insurances == null"><i>no data available</i></div>
-                <md-list flex ng-show="insurances != null">
+                <md-list ng-show="insurances != null">
                     <md-list-item class="md-2-line" ng-repeat="item in insurances | orderBy: '-time'">
                         <div class="md-list-item-text">
                             <h3>{{ item.time }}</h3>
@@ -136,9 +130,9 @@
                     </md-list-item>
                 </md-list>
             </md-card-content>
-            <md-card-actions layout="row" layout-align="end center">
-                <!--<md-button id="addData" ng-click="openAddData()" md-no-ink class="md-primary">Add Data</md-button>-->
-            </md-card-actions>
+            <!--<md-card-actions layout="row" layout-align="end center">
+                <md-button id="addData" ng-click="openAddData()" md-no-ink class="md-primary">Add Data</md-button>
+            </md-card-actions>-->
         </md-card>
     </div>
     <md-card flex-gt-sm="20">
@@ -148,12 +142,11 @@
                 <span class="md-headline">Machine Learning</span>
             </md-card-title-text>
         </md-card-title>
-        <md-card-content>
+        <md-card-content layout="column" layout-padding>
             <div ng-show="clientvalue == null"><i>no data available</i></div>
-            <p align="center">
-                <ng-gauge id="machineLearning" ng-show="clientvalue != null" value="clientvalue" total="100" cap="round"
-                          thick="10"
-                          type="semi" label="client value" foreground-color="#ffcc66" append="%"></ng-gauge>
+            <p align="center" ng-show="clientvalue != null">
+                <ng-gauge id="machineLearning" value="clientvalue" total="100" cap="round"
+                          thick="10" type="semi" label="client value" foreground-color="#ffcc66" append="%"></ng-gauge>
             </p>
         </md-card-content>
     </md-card>

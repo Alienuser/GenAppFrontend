@@ -61,12 +61,23 @@
         function pollApi() {
             Api.getCustomerData(customerID)
                 .then(function (response) {
+                    // Check if we should speak
                     if (speak) {
-                        var msg = new SpeechSynthesisUtterance('We have some data. Please have a look.');
-                        msg.lang = 'en-US';
-                        window.speechSynthesis.speak(msg);
+                        // Get tge right speak function
+                        var speech, SpeechSynthesisUtterance = window.webkitSpeechSynthesisUtterance ||
+                            window.mozSpeechSynthesisUtterance ||
+                            window.msSpeechSynthesisUtterance ||
+                            window.oSpeechSynthesisUtterance ||
+                            window.SpeechSynthesisUtterance;
+                        if (SpeechSynthesisUtterance !== undefined) {
+                            speech = new SpeechSynthesisUtterance();
+                            speech.text = 'We have some data. Please have a look.';
+                            speech.lang = "en-US";
+                            speechSynthesis.speak(speech);
+                        }
                         speak = false;
                     }
+
                     // Set the data
                     $scope.customer = response.data.customer;
                     $scope.loadUser = false;
@@ -164,6 +175,7 @@
                     };
 
                     $scope.search = function () {
+                        $mdDialog.hide();
                         customerID = $scope.customerID;
                         $rootScope.stopPolling();
                         startPolling();
@@ -171,7 +183,6 @@
                         msg.lang = 'en-US';
                         window.speechSynthesis.speak(msg);
                         $mdToast.showSimple("Searching for customer with no: " + $scope.customerID);
-                        $mdDialog.hide();
                     };
                 }
             });
