@@ -28,5 +28,3 @@ npm run lite
 ```
 
 This should open a browser and display the dashboard.
-
-## Install on Bluemix
